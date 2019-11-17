@@ -25,7 +25,7 @@ The 'world champion' standard of AI for this board game is a program called [JSe
 
 The DQN, or Deep Q-Learning Network, algorithm is a novel approach to reinforcement learning proposed by [the DeepMind team in 2013](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf). As a quick refresher on reinforcement learning, take a look at the graphic below. In a model with an agent and an environment, the goal of reinforcement learning is to develop a policy such that an agent can find itself in a particular state, query its policy, and perform the corresponding action such that its reward is maximized.
 
-| ![Reinforcement Learning Diagram](assets/img/reinforcement.jpg) | 
+| ![Reinforcement Learning Diagram](assets/img/reinforcement.jpg ) | 
 |:--:| 
 | *Source: https://www.kdnuggets.com* |
 
@@ -138,7 +138,7 @@ Our DQN code was all written in Python, and is implemented in the component:
 
 To implement our own agent, we had to create our own Client and Brain that interface both with the Server for game management and our DQN Server for decision logic. This initial architecture is shown in the diagram below:
 
-| ![Architecture 1](assets/img/arch1.png)| 
+| ![Architecture 1](assets/img/arch1.png | width = 500)| 
 |:--:| 
 | *Initial Pipeline Design* |
 
