@@ -1,0 +1,12 @@
+.inner{
+	width:1100px;
+	left: 5%;
+}
+
+#jsettlers_img{
+	position:absolute;
+	height:auto;
+	width:600px;
+	top:200px;
+	right:50px;
+}
