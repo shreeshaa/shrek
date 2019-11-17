@@ -6,7 +6,7 @@
 &nbsp;
 
 | ![Settlers of Catan Game UI](assets/img/jsettlers.png) | 
-
+|:--:| 
 | *Settlers of Catan Game UI* |
 
 ## What is Settlers of Catan?
@@ -26,6 +26,7 @@ The 'world champion' standard of AI for this board game is a program called [JSe
 The DQN, or Deep Q-Learning Network, algorithm is a novel approach to reinforcement learning proposed by [the DeepMind team in 2013](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf). As a quick refresher on reinforcement learning, take a look at the graphic below. In a model with an agent and an environment, the goal of reinforcement learning is to develop a policy such that an agent can find itself in a particular state, query its policy, and perform the corresponding action such that its reward is maximized.
 
 | ![Reinforcement Learning Diagram](assets/img/reinforcement.jpg) | 
+|:--:| 
 | *Source: https://www.kdnuggets.com* |
 
 &nbsp;
@@ -36,6 +37,7 @@ Q-Learning is a technique to develop such a policy by maintaining a large table 
 Deep Q-Learning is an alternative approach to Q-Learning that doesn't face these issues. It involves utilizing a deep neural network (CNN) to approximate the Q value for (state, action) pairs instead of a table like classical Q-Learning. DQN is very efficient when there is a large state space with a large amount of actions, as it can estimate a Q-value for a never-seen-before state by comparing how similar it is to known states. This algorithm has seen success with game-playing in the context of Atari and Pacman, as opposed to the classical Q-Learning approach. Take a look at the graphic below for a basic representation of these two approaches:
 
 | ![General DQN Diagram](assets/img/Q-Learning.png) | 
+|:--:| 
 | *Source: https://www.analyticsvidhya.com* |
 
 &nbsp;
@@ -55,13 +57,13 @@ As shown in the diagram above, we have to define what our 'state' really is as w
 For each DQN, we have to define what a 'state' is as a feature vector. In Settlers of Catan, there are a huge number of features in a game state: what buildings each player has, where these buildings are, what the terrain is like, how many points each player has, and many more. We elected not to use every single feature in a state representation as the network would require more training time to learn which are relevant and which are not. By using prior knowledge and only providing relevant features to the network, we hypothesize training to be more efficient. The diagrams below show our constructed feature vectors for each network:
 
 | ![Trade DQN Diagram](assets/img/trade_nn.png)| 
-
+|:--:| 
 | *DQN for Trade Decisions* |
 
 &nbsp;
 
 <!-- | ![Settlement DQN Diagram](assets/img/trade_nn.png)| 
-
+|:--:| 
 | *DQN for Settlement Scoring* |
 
 &nbsp;
@@ -90,7 +92,7 @@ Additionally, the agent has to explore all the different actions in different st
 In this technique, we have a parameter epsilon that is initialized to a high value, such as .999. Whenever we have to make a decision, we generate a random number and if it is greater than epsilon, we return a completely random action without querying our network. If this random number is less than epsilon, we actually perform forward propogation on our network and return the result. In both scenarios, we train our network on the resultant reward. After every decision is made, we update epsilon by a decay factor:
 
 | <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon&space;=&space;decay&space;\times&space;\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon&space;=&space;decay&space;\times&space;\epsilon" title="\epsilon = decay \times \epsilon" /></a>| 
-
+|:--:| 
 |  |
 
 &nbsp;
@@ -98,7 +100,7 @@ In this technique, we have a parameter epsilon that is initialized to a high val
 This represents the process of our agent becoming 'more sure' of itself as it trains more and more, while still exploring spaces where the expected reward is unknown. For our model, we used the following values for these parameters:
 
 |<a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon&space;=&space;1.00&space;\\&space;decay&space;=&space;0.975" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon&space;=&space;1.00&space;\\&space;decay&space;=&space;0.975" title="\epsilon = 1.00 \\ decay = 0.975" /></a>|
-
+|:--:| 
 |  |
 
 &nbsp;
